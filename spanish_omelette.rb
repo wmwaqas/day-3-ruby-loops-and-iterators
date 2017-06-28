@@ -1,3 +1,4 @@
+#Helper Methods
 def print_divider
   puts "*" * 40
   puts "\n"
@@ -8,6 +9,7 @@ def print_progress_bar
   puts "\n"
 end
 
+#Defining the Ingredients
 NUM_POTATOES = 5
 NUM_EGGS = 6
 
@@ -19,6 +21,7 @@ ingredients = [
   { name: 'salt', quantity: 'some' },
 ]
 
+#Printing Out the Ingredients
 puts "*    Lets cook a Spanish Omelette!     *"
 print_divider
 
@@ -28,6 +31,7 @@ ingredients.each do
   |ingredient| puts "#{ingredient[:quantity]} #{ingredient[:name]}"
 end
 
+#Asking user if he got all ingredients
 loop do
   puts "\n"
   print_divider
@@ -45,6 +49,7 @@ loop do
   end
 end
 
+#Defining the Recipe Steps
 steps = [
   { description: "Scrape potatoes", action: "scrape_potatoes" },
   { description: "Cut potatoes into thick slices", action: "cut_potatoes" },
@@ -62,6 +67,7 @@ steps = [
   { description: "Cook a few more minutes and slide on to a plate and cool for 10 minutes before serving", action: "generic_recipe_step" }
 ]
 
+#Printing Out the Steps
 print_divider
 puts "See below the different steps to follow"
 
@@ -69,6 +75,7 @@ steps.each_with_index do |step, index|
   puts (index + 1).to_s + ")" + step[:description]
 end
 
+#Defining the Steps Actions
 def generic_recipe_step
   puts "On it!"
   print_progress_bar
@@ -107,3 +114,13 @@ def break_eggs
     print_progress_bar
   end
 end
+
+#Asking User if Ready for Next Step
+def ask_if_ready(step, index)
+  puts "Are you ready for step #{index + 1}?\n(#{step[:description]})"
+  answer = gets.chomp
+
+  answer.upcase == 'Y'
+end
+
+ask_if_ready
